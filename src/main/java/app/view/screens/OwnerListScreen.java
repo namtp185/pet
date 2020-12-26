@@ -78,6 +78,7 @@ public class OwnerListScreen extends ContentPane implements ActionListener, Wind
 		add(column);
 	
 		// Add Close button
+		System.out.println("resource bundle" + labels.toString());
 		_closeButton = new Button(labels.getString("Button.Back"));
 		_closeButton.setStyleName("Button.Back");
 		_closeButton.setActionCommand("_closeButton");

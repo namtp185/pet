@@ -89,6 +89,7 @@ public class ListAllOwnersPresenter extends AbstractUseCasePresenter {
 		ownerListDTO = service.readOwnerList();
 		System.out.println("service: " + service.toString());
 		System.out.println("ownerlistDTO: " + ownerListDTO.toString());
+		System.out.println("view: " + view.toString());
 		if (!ownerListDTO.isEmpty()) { /* owners found [1] */
 		    view.showOwnerListScreen(this);
 		    pageOpened();

@@ -1,54 +1,55 @@
 package app.view;
-import nextapp.echo.app.ContentPane;
-import app.presenter.MainPresenter;
-import java.util.Stack;
 import java.util.ResourceBundle;
-import nextapp.echo.app.Window;
-import app.presenter.petsAndOwners.ListAllOwnersPresenter;
-import app.presenter.petsAndOwners.DeletePetPresenter;
-import app.presenter.veterinarians.EditVetPresenter;
+import java.util.Stack;
+
+import app.presenter.MainPresenter;
 import app.presenter.petsAndOwners.AddNewOwnerPresenter;
 import app.presenter.petsAndOwners.AddNewPetPresenter;
-import app.presenter.visits.CreateNewVisitPresenter;
+import app.presenter.petsAndOwners.DeletePetPresenter;
 import app.presenter.petsAndOwners.FindPetPresenter;
-import app.presenter.veterinarians.ListAllVetsPresenter;
-import app.presenter.visits.ShowVisitsForPetPresenter;
+import app.presenter.petsAndOwners.ListAllOwnersPresenter;
 import app.presenter.petsAndOwners.ShowPetsPresenter;
-import app.presenter.visits.ShowVisitDetailsPresenter;
+import app.presenter.veterinarians.EditVetPresenter;
+import app.presenter.veterinarians.ListAllVetsPresenter;
+import app.presenter.visits.CreateNewVisitPresenter;
 import app.presenter.visits.EditVisitPresenter;
-import nextapp.echo.app.ApplicationInstance;
-import nextapp.echo.app.StyleSheet;
-import nextapp.echo.app.serial.StyleSheetLoader;
-import nextapp.echo.app.serial.SerialException;
-import app.view.screens.OwnerListScreen;
+import app.presenter.visits.ShowVisitDetailsPresenter;
+import app.presenter.visits.ShowVisitsForPetPresenter;
 import app.view.messages.AddNewOwnerDialog;
-import app.view.messages.InvalidOwnerDataMessage;
-import app.view.messages.NoPetsFoundMessage;
-import app.view.screens.NewPetForm;
-import app.view.messages.PetAddedMessage;
-import app.view.messages.InvalidPetDataMessage;
 import app.view.messages.DeletePetConfirmationDialog;
-import app.view.screens.NewVisitForm;
-import app.view.messages.VisitAddedConfirmation;
-import app.view.messages.InvalidVisitDataMessage;
-import app.view.screens.VetListScreen;
-import app.view.messages.NoVetsFoundMessage;
-import app.view.screens.VetForm;
-import app.view.messages.VetUpdatedMessage;
 import app.view.messages.IncorrectVetDataMessage;
-import app.view.messages.VetUpdateFailureMessage;
-import app.view.screens.VisitListScreen;
+import app.view.messages.InvalidOwnerDataMessage;
+import app.view.messages.InvalidPetDataMessage;
+import app.view.messages.InvalidVisitDataMessage;
+import app.view.messages.NoPetsFoundMessage;
+import app.view.messages.NoVetsFoundMessage;
 import app.view.messages.NoVisitsFoundMessage;
-import app.view.screens.VisitDetailsScreen;
-import app.view.screens.VisitForm;
+import app.view.messages.OwnerAddedMessage;
+import app.view.messages.PetAddedMessage;
+import app.view.messages.VetUpdateFailureMessage;
+import app.view.messages.VetUpdatedMessage;
+import app.view.messages.VisitAddedConfirmation;
 import app.view.messages.VisitUpdatedMessage;
 import app.view.messages.WrongVisitDataMessage;
-import app.view.screens.OwnersPetsScreen;
-import app.view.screens.PetSearchForm;
-import app.view.screens.PetListScreen;
 import app.view.screens.MainPage;
 import app.view.screens.NewOwnerForm;
-import app.view.messages.OwnerAddedMessage;
+import app.view.screens.NewPetForm;
+import app.view.screens.NewVisitForm;
+import app.view.screens.OwnerListScreen;
+import app.view.screens.OwnersPetsScreen;
+import app.view.screens.PetListScreen;
+import app.view.screens.PetSearchForm;
+import app.view.screens.VetForm;
+import app.view.screens.VetListScreen;
+import app.view.screens.VisitDetailsScreen;
+import app.view.screens.VisitForm;
+import app.view.screens.VisitListScreen;
+import nextapp.echo.app.ApplicationInstance;
+import nextapp.echo.app.ContentPane;
+import nextapp.echo.app.StyleSheet;
+import nextapp.echo.app.Window;
+import nextapp.echo.app.serial.SerialException;
+import nextapp.echo.app.serial.StyleSheetLoader;
 
 /**
  * @author Wiktor
@@ -62,8 +63,10 @@ public class ViewImpl extends ApplicationInstance implements IView {
 	private Stack pageStack = new Stack();
 	private ResourceBundle resourceBundle;
 	private Window window;
+	private static ViewImpl instance;
+	
 
-	public ViewImpl(){
+	private ViewImpl(){
 
 	}
 
@@ -168,8 +171,10 @@ public class ViewImpl extends ApplicationInstance implements IView {
 		this.setStyleSheet(styleSheet);
 	
 		// Get resource bundle
+		System.out.println("creating resource bundle");
 		resourceBundle = ResourceBundle.getBundle("messages.en", ApplicationInstance.getActive().getLocale());
-	
+		System.out.println(resourceBundle);
+		
 		window = new Window();
 		showMainPage();
 		return window;
@@ -352,6 +357,8 @@ public class ViewImpl extends ApplicationInstance implements IView {
 	
 		if (currentPage != null)
 		    pageStack.push(currentPage);
+		System.out.println("current resource bundle");
+		System.out.println(resourceBundle);
 		OwnerListScreen page = new OwnerListScreen(presenter, resourceBundle);
 		show(page);
 	
@@ -543,6 +550,13 @@ public class ViewImpl extends ApplicationInstance implements IView {
 	private void show(ContentPane contentPane){
 		window.setContent(contentPane);
 		currentPage = contentPane;
+	}
+
+	public static ViewImpl getInstance() {
+		if(instance == null) {
+			instance = new ViewImpl();
+		}
+		return instance;
 	}
 
 }

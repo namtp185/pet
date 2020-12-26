@@ -37,7 +37,7 @@ public class MainApplicationServlet extends WebContainerServlet {
 //		WebApplicationContext context = (WebApplicationContext) WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		ViewImpl mainApp = (ViewImpl) context.getBean("view");
 //		return (ApplicationInstance) mainApp;
-		return new ViewImpl();
+		return ViewImpl.getInstance();
 	}
 	
    @Override

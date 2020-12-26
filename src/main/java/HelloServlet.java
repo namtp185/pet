@@ -61,7 +61,7 @@ public class HelloServlet extends WebContainerServlet {
 //		System.out.println(mainApp);
 //		return (ApplicationInstance) mainApp;
 		
-		ViewImpl view = new ViewImpl();
+		ViewImpl view = ViewImpl.getInstance();
 		
 		MainPresenter mainPresenter = new MainPresenter();
 		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("/WEB-INF/Beans.xml"));

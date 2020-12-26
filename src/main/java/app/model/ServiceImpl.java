@@ -1,4 +1,5 @@
 package app.model;
+import java.util.ArrayList;
 import java.util.List;
 
 import app.dto.OwnerDataDTO;
@@ -65,8 +66,12 @@ public class ServiceImpl implements IService {
 
 	@Override
 	public List<OwnerListItemDTO> readOwnerList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<OwnerListItemDTO> ownerListItemDTO = new ArrayList<OwnerListItemDTO>();
+		OwnerListItemDTO owner = new OwnerListItemDTO();
+		owner.setOwnerFirstName("Nguyen");
+		owner.setOwnerFirstName("An");
+		ownerListItemDTO.add(owner);
+		return ownerListItemDTO;
 	}
 
 	@Override

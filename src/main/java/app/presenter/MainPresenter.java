@@ -2,6 +2,7 @@ package app.presenter;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import app.presenter.veterinarians.ListAllVetsPresenter;
+import app.view.ViewImpl;
 import app.presenter.petsAndOwners.FindPetPresenter;
 import app.presenter.petsAndOwners.ListAllOwnersPresenter;
 import app.presenter.petsAndOwners.AddNewPetPresenter;
@@ -40,6 +41,7 @@ public class MainPresenter implements BeanFactoryAware {
 
 	public void invokeListAllOwners(){
 		listAllOwnersPresenter = (ListAllOwnersPresenter) beanFactory.getBean("listAllOwnersPresenter");
+		listAllOwnersPresenter.setView(ViewImpl.getInstance());
 		listAllOwnersPresenter.invoke(null);
 	}
 
