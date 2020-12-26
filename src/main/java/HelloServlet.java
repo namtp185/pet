@@ -64,7 +64,7 @@ public class HelloServlet extends WebContainerServlet {
 		ViewImpl view = new ViewImpl();
 		
 		MainPresenter mainPresenter = new MainPresenter();
-		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
+		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("/WEB-INF/Beans.xml"));
 		mainPresenter.setBeanFactory(factory);
 //		ResourceBundle labels = ResourceBundle.getBundle("messages.en", Locale.US);
 //		MainPage mainPage = new MainPage(mainPresenter, labels);

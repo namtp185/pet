@@ -1,19 +1,43 @@
 package app.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Wiktor
  * @version 1.0
  * @created 25-maj-2015 23:50:33
  */
 
+@Entity
+@Table(name = "owner")
 public class OwnerDataDTO {
 
+	@Column(name = "address")
 	private String address = null;
+	
+	@Column(name = "city")
 	private String city = null;
+	
+	@Column(name = "email")
 	private String email = null;
+	
+	@Column(name = "owner_first_name")
 	private String ownerFirstName = null;
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "owner_id")
 	private Long ownerID = null;
+    
+    @Column(name = "owner_last_name")
 	private String ownerLastName = null;
+    
+    @Column(name = "phone_number")
 	private String phoneNumber = null;
 
 

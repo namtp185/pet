@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent"/>
         <dependent-module archiveName="echo3-app-3.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-app-3.0.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
