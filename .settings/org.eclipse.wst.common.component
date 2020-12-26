@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="pet">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="echo3-app-3.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-app-3.0.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/commons-logging-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.2-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/commons-logging-1.2-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-extras-webcontainer-3.0.3-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-extras-webcontainer-3.0.3-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-2.5.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/spring-2.5.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-extras-3.0.3-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-extras-3.0.3-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-2.5.6-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/spring-2.5.6-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-extras-3.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-extras-3.0.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-extras-webcontainer-3.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-extras-webcontainer-3.0.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-webcontainer-3.0.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-webcontainer-3.0.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-webcontainer-3.0.3-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-webcontainer-3.0.3-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="echo3-app-3.0.3-sources.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/pet/lib/echo3-app-3.0.3-sources.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="pet"/>
         <property name="java-output-path" value="/pet"/>
     </wb-module>
