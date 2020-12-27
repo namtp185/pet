@@ -2,6 +2,8 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import app.dto.OwnerDataDTO;
 import app.dto.OwnerListItemDTO;
 import app.dto.PetDataDTO;
@@ -12,6 +14,7 @@ import app.dto.VeterinarianListItemDTO;
 import app.dto.VisitDataDTO;
 import app.dto.VisitDetailsDTO;
 import app.dto.VisitListItemDTO;
+import app.repository.OwnerListItemRepository;
 
 /**
  * @author Wiktor
@@ -20,6 +23,9 @@ import app.dto.VisitListItemDTO;
  */
 public class ServiceImpl implements IService {
 
+	@Autowired
+	OwnerListItemRepository ownerListItemRepository;
+	
 	public ServiceImpl(){
 
 	}
@@ -69,9 +75,17 @@ public class ServiceImpl implements IService {
 		List<OwnerListItemDTO> ownerListItemDTO = new ArrayList<OwnerListItemDTO>();
 		OwnerListItemDTO owner = new OwnerListItemDTO();
 		owner.setOwnerFirstName("Nguyen");
-		owner.setOwnerFirstName("An");
+		owner.setOwnerLastName("An");
+		owner.setEmail("nguyenvanan@gmail.com");
+		owner.setOwnerID(1L);
+		owner.setPhoneNumber("0968368368");
+		
+		
 		ownerListItemDTO.add(owner);
-		return ownerListItemDTO;
+		
+		return ownerListItemRepository.findAll();
+		
+//		return ownerListItemDTO;
 	}
 
 	@Override

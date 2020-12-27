@@ -30,7 +30,6 @@ app\view\screens\PetListScreen.class
 app\dto\PetListItemDTO.class
 app\view\screens\VetListScreen.class
 app\presenter\petsAndOwners\FindPetPresenter.class
-SpringXMLConfiguration.class
 app\view\screens\MainPage.class
 app\view\auxiliary\OwnerListTableModel.class
 app\view\messages\OwnerAddedMessage.class
@@ -77,3 +76,4 @@ app\presenter\petsAndOwners\AddNewOwnerPresenter.class
 app\view\messages\InvalidVisitDataMessage.class
 app\view\messages\WrongVisitDataMessage.class
 app\dto\OwnerListItemDTO.class
+app\repository\OwnerListItemRepository.class

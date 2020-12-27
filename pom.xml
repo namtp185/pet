@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>pet</groupId>
   <artifactId>pet</artifactId>
+  <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <build>
     <resources>
@@ -33,6 +34,14 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+  		<plugin>            
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-war-plugin</artifactId>
+		  <version>2.6</version>
+		  <configuration>
+		    <webXml>WebContent/WEB-INF/web.xml</webXml>        
+		  </configuration>
+		</plugin>
     </plugins>
   </build>
   <dependencies>
@@ -138,6 +147,13 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.45</version>
     </dependency>
+	<dependency>
+    	<groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-war-plugin</artifactId>
+	    <version>2.6</version>
+	</dependency>
+	
+    
 	
   </dependencies>
 </project>
