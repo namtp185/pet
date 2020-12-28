@@ -2,7 +2,9 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 
 import app.dto.OwnerDataDTO;
 import app.dto.OwnerListItemDTO;
@@ -21,6 +23,7 @@ import app.repository.OwnerListItemRepository;
  * @version 1.0
  * @created 25-maj-2015 23:50:34
  */
+@Aspect
 public class ServiceImpl implements IService {
 
 	@Autowired
@@ -32,6 +35,10 @@ public class ServiceImpl implements IService {
 
 	public void finalize() throws Throwable {
 
+	}
+	
+	public void setOwnerListItemRepository(OwnerListItemRepository ownerListItemRepository) {
+		this.ownerListItemRepository = ownerListItemRepository;
 	}
 
 	@Override
