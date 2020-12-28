@@ -8,5 +8,9 @@
    <bean id = "listAllOwnersPresenter" class = "app.presenter.petsAndOwners.ListAllOwnersPresenter">
    </bean>
    
+   <bean id = "ownerListItemRepository" class = "app.repository.OwnerListItemRepository"></bean>
+   <bean id="serviceImpl" class="app.demo.ServiceImpl">
+		<property name="ownerListItemRepository" ref="ownerListItemRepository"></property>
+	</bean>
 
 </beans>
