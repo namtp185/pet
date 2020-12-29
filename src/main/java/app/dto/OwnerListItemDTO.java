@@ -1,16 +1,29 @@
 package app.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 /**
  * @author Wiktor
  * @version 1.0
  * @created 25-maj-2015 23:50:33
  */
+@Entity
 public class OwnerListItemDTO {
 
+	@Column(name = "email")
 	private String email = null;
+	
+	@Column(name = "first_name")
 	private String ownerFirstName = null;
+	
+	@Column(name = "id")
 	private Long ownerID = null;
+	
+	@Column(name = "last_name")
 	private String ownerLastName = null;
+	
+	@Column(name = "phone_number")
 	private String phoneNumber = null;
 
 
@@ -96,6 +109,11 @@ public class OwnerListItemDTO {
 	public void setPhoneNumber(String phoneNumber){
 		this.phoneNumber = phoneNumber;
 	
+	}
+	
+	@Override
+	public String toString() {
+		return this.ownerID.toString() + ", " + this.ownerFirstName + ", " + this.ownerLastName + ", " + this.email + ", " + this.phoneNumber;
 	}
 
 }

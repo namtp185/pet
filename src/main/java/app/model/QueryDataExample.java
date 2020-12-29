@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+
+import app.dto.OwnerListItemDTO;
  
 public class QueryDataExample {
  
@@ -23,20 +26,15 @@ public class QueryDataExample {
  
         // Fetch on the ResultSet        
         // Move the cursor to the next record.
-        while (rs.next()) {
-            int ownerId = rs.getInt(1);
-            String firstName = rs.getString(2);
-            String lastName = rs.getString("last_name");
-            String email = rs.getString("email");
-            String phoneNumber = rs.getString("phone_number");
-            System.out.println("OwnerId:" + ownerId);
-            System.out.println("OwnerFirstName:" + firstName);
-            System.out.println("OwnerLastName:" + lastName);
-            System.out.println("OwnerEmail:" + email);
-            System.out.println("OwnerPhoneNumber:" + phoneNumber);
-        }
- 
-        // Close connection.
+        ResultSetMapper<OwnerListItemDTO> resultSetMapper = new ResultSetMapper<OwnerListItemDTO>();
+        List<OwnerListItemDTO> pojoList = resultSetMapper.mapRersultSetToObject(rs, OwnerListItemDTO.class);
+        if(pojoList != null){
+			for(OwnerListItemDTO pojo : pojoList){
+				System.out.println(pojo);
+			}
+		} else {
+			System.out.println("ResultSet is empty. Please check if database table is empty");
+		}
         connection.close();
     }
  

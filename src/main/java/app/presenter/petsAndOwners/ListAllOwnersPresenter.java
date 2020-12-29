@@ -1,5 +1,7 @@
 package app.presenter.petsAndOwners;
 import app.presenter.AbstractUseCasePresenter;
+
+import java.sql.SQLException;
 import java.util.List;
 import app.dto.OwnerListItemDTO;
 
@@ -86,7 +88,19 @@ public class ListAllOwnersPresenter extends AbstractUseCasePresenter {
 	}
 
 	public void listAllOwnersTriggered(){
-		ownerListDTO = service.readOwnerList();
+		try {
+			ownerListDTO = service.readOwnerList();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(ownerListDTO == null) {
+			System.out.println("Null owner list DTO");
+			return;
+		}
 		System.out.println("service: " + service.toString());
 		System.out.println("ownerlistDTO: " + ownerListDTO.toString());
 		System.out.println("view: " + view.toString());

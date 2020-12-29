@@ -1,4 +1,8 @@
 package app.model;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,21 +82,31 @@ public class ServiceImpl implements IService {
 	}
 
 	@Override
-	public List<OwnerListItemDTO> readOwnerList() {
-		List<OwnerListItemDTO> ownerListItemDTO = new ArrayList<OwnerListItemDTO>();
-		OwnerListItemDTO owner = new OwnerListItemDTO();
-		owner.setOwnerFirstName("Nguyen");
-		owner.setOwnerLastName("An");
-		owner.setEmail("nguyenvanan@gmail.com");
-		owner.setOwnerID(1L);
-		owner.setPhoneNumber("0968368368");
-		
-		
-		ownerListItemDTO.add(owner);
-		
-		return ownerListItemRepository.findAll();
-		
-//		return ownerListItemDTO;
+	public List<OwnerListItemDTO> readOwnerList() throws SQLException, ClassNotFoundException {
+		// Get Connection
+        Connection connection = ConnectionUtils.getMyConnection();
+ 
+        // Create statement
+        Statement statement = connection.createStatement();
+ 
+        String sql = "select id, first_name, last_name, email, phone_number from owner";
+ 
+        // Execute SQL statement returns a ResultSet object.
+        ResultSet rs = statement.executeQuery(sql);
+ 
+        // Fetch on the ResultSet        
+        // Move the cursor to the next record.
+        ResultSetMapper<OwnerListItemDTO> resultSetMapper = new ResultSetMapper<OwnerListItemDTO>();
+        List<OwnerListItemDTO> pojoList = resultSetMapper.mapRersultSetToObject(rs, OwnerListItemDTO.class);
+        if(pojoList != null){
+			for(OwnerListItemDTO pojo : pojoList){
+				System.out.println(pojo);
+			}
+		} else {
+			System.out.println("ResultSet is empty. Please check if database table is empty");
+		}
+        connection.close();
+		return pojoList;
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 package app.model;
+import java.sql.SQLException;
 import java.util.List;
 
 import app.dto.OwnerDataDTO;
@@ -31,7 +32,7 @@ public interface IService {
 
 	List<PetListItemDTO> readPetList(PetSearchCriteriaDTO petSearchCriteriaDTO);
 
-	List<OwnerListItemDTO> readOwnerList();
+	List<OwnerListItemDTO> readOwnerList() throws SQLException, ClassNotFoundException;
 
 	List<PetListItemDTO> readPetList(Long inputOwnerID);
 
